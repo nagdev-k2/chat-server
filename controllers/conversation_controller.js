@@ -10,8 +10,8 @@ module.exports = {
         Conversations.findConversation({ senderId: receiverId, receiverId: senderId }, (row2) => {
           if (row2.length > 0) res.send(row2[0]);
           else {
-            Conversations.createConversation({ senderId, receiverId }, (row3) => {
-              if (row3.length > 0) res.send(row3[0]);
+            Conversations.createConversation({ senderId, receiverId }, (id) => {
+              res.send({ id });
             });
             
           }

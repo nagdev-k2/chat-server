@@ -15,7 +15,8 @@ con.connect(function(err) {
 const createConversation = ({ senderId, receiverId }, callback) => {
   con.query('insert into conversations (`members`) values("['+ senderId +', '+ receiverId +']");', function (err, rows, fields) {
     if (err) throw err;
-    if (rows.length > 0) callback(rows);
+    if (rows.insertId >= 0) callback(rows.insertId)
+    else callback(false);
   });
 };
 

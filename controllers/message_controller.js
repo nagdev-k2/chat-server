@@ -11,7 +11,6 @@ module.exports = {
   newMessage: (req, res) => {
     const { author, conversationId, message, isFile } = req.query;
     Messages.createMessage({author, conversationId, message, isFile}, (row) => {
-      console.log('in contreoller', row);
       res.send(row);
     })
   },

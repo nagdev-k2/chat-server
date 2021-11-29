@@ -9,7 +9,6 @@ const con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
 });
 
 const createMessage = ({ conversationId, author, message, isFile }, callback) => {
@@ -23,7 +22,6 @@ const createMessage = ({ conversationId, author, message, isFile }, callback) =>
 
 const getMessages = ({ conversationId }, callback) => {
   con.query('SELECT * from messages where conversationId = "'+ conversationId+'";', function (err, rows) {
-    console.log('in get messages', rows);
     if (err) throw err;
     if (rows && rows.length > 0) callback(rows);
     else callback([]);
