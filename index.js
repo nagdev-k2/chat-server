@@ -6,8 +6,8 @@ const cors = require('cors');
 const messageRoutes = require('./routes/messages');
 
 io.on('connection', socket => {
-  socket.on('message', ({ name, message }) => {
-    io.emit('message', { name, message })
+  socket.on('message', ({ timestamp, message, isFile, author, conversationId }) => {
+    io.emit('message', { timestamp, message, isFile, author, conversationId })
   })
 });
 
